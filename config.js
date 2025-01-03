@@ -7,7 +7,7 @@ function convertToBool(text, fault = 'true') {
 module.exports = {
 AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "true",
 ALIVE_IMG: process.env.ALIVE_IMG || "https://i.ibb.co/tC37Q7B/20241220-122443.jpg",
-SESSION_ID: process.env.SESSION_ID,
+SESSION_ID: process.env.SESSION_ID || "SdtRWbjS#QqJw3tO4JRdx7QFiYsPPPBPJhl3tOb71mk4slL_pGwA",
 };
 
 

@@ -29,7 +29,7 @@ const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
 filer.download((err, data) => {
 if(err) throw err
 fs.writeFile(__dirname + '/auth_info_baileys/creds.json', data, () => {
-console.log("Gojo Satoru MD 💚 Session downloaded ✅")
+console.log("Gojo Satoru MD 💙 Session downloaded ✅")
 })})}
 
 const express = require("express");
@@ -39,7 +39,7 @@ const port = process.env.PORT || 8000;
 //=============================================
 
 async function connectToWA() {
-console.log("Gojo Satoru MD 💚 Connecting wa bot 🧬...");
+console.log("Gojo Satoru MD 💙 Connecting Wa Bot 🧬...");
 const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/auth_info_baileys/')
 var { version } = await fetchLatestBaileysVersion()
 
@@ -59,17 +59,17 @@ if (lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut) {
 connectToWA()
 }
 } else if (connection === 'open') {
-console.log('Gojo Satoru MD 💚 😼 Installing... ')
+console.log('Gojo Satoru MD 💙 😼 Installing... ')
 const path = require('path');
 fs.readdirSync("./plugins/").forEach((plugin) => {
 if (path.extname(plugin).toLowerCase() == ".js") {
 require("./plugins/" + plugin);
 }
 });
-console.log('Gojo Satoru MD 💚 Plugins installed successful ✅')
-console.log('Gojo Satoru MD 💚Bot connected to whatsapp ✅')
+console.log('Gojo Satoru MD 💙 Plugins Installed Successful ✅')
+console.log('Gojo Satoru MD 💙Bot Connected To Whatsapp ✅')
 
-let up = `Gojo Satoru MD 💚 Wa-BOT connected successful ✅\n\nPREFIX: ${prefix}`;
+let up = `Gojo Satoru MD 💙 Wa-BOT Connected Successful ✅\n\n✨ Thanks For Using Gojo Satoru MD 💙\n\nPREFIX: ${prefix}`;
 
 conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://i.ibb.co/h2vC7XG/Gojo-satoru-md-bot-2.jpg` }, caption: up })
 

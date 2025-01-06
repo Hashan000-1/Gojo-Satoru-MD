@@ -9,7 +9,7 @@ cmd({
     use: '.ping',
     filename: __filename
 },
-async(conn, mek, m, { from, reply }) => {
+async(GojoBotInc, mek, m, { from, reply }) => {
     const start = Date.now();
     await reply("𝐂𝐡𝐞𝐜𝐤𝐢𝐧𝐠 𝐃𝐢𝐝𝐮𝐥𝐚 𝐌𝐃 𝐒𝐩𝐞𝐞𝐝💚"); // Inform the user that the ping is in progress
     const end = Date.now();

@@ -29,7 +29,7 @@ const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
 filer.download((err, data) => {
 if(err) throw err
 fs.writeFile(__dirname + '/auth_info_baileys/creds.json', data, () => {
-console.log("Gojo Satoru MD 💚 Session downloaded ✅")
+console.log("Gojo Satoru MD 💙 Session downloaded ✅")
 })})}
 
 const express = require("express");
@@ -39,11 +39,11 @@ const port = process.env.PORT || 8000;
 //=============================================
 
 async function connectToWA() {
-console.log("Gojo Satoru MD 💚 Connecting wa bot 🧬...");
+console.log("Gojo Satoru MD 💙 Connecting Wa Bot 🧬...");
 const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/auth_info_baileys/')
 var { version } = await fetchLatestBaileysVersion()
 
-const conn = makeWASocket({
+const GojoBotInc = makeWASocket({
         logger: P({ level: 'silent' }),
         printQRInTerminal: false,
         browser: Browsers.macOS("Firefox"),
@@ -52,57 +52,69 @@ const conn = makeWASocket({
         version
         })
 
-conn.ev.on('connection.update', (update) => {
+GojoBotInc.ev.on('connection.update', (update) => {
 const { connection, lastDisconnect } = update
 if (connection === 'close') {
 if (lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut) {
 connectToWA()
 }
 } else if (connection === 'open') {
-console.log('Gojo Satoru MD 💚 😼 Installing... ')
+console.log('Gojo Satoru MD 💙 😼 Installing... ')
 const path = require('path');
 fs.readdirSync("./plugins/").forEach((plugin) => {
 if (path.extname(plugin).toLowerCase() == ".js") {
 require("./plugins/" + plugin);
 }
 });
-console.log('Gojo Satoru MD 💚 Plugins installed successful ✅')
-console.log('Gojo Satoru MD 💚Bot connected to whatsapp ✅')
+console.log('Gojo Satoru MD 💙 Plugins Installed Successful ✅')
+console.log('Gojo Satoru MD 💙Bot Connected To Whatsapp ✅')
 
-let up = `Gojo Satoru MD 💚 Wa-BOT connected successful ✅\n\nPREFIX: ${prefix}`;
+let up = `Gojo Satoru MD 💙 Wa-BOT Connected Successful ✅
 
-conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://i.ibb.co/tC37Q7B/20241220-122443.jpg` }, caption: up })
+*╭⊱✫🤞 Gojo Sotoru MD 💙✫⊱╮*
+*│✫➠ - 📂REPOSITORY NAME:* *GOJO-SATORU-MD*
+*│✫➠ - 📃DESCRIPTION:* *THE WORLD BEST WHATSAPP BOT♻️*
+*│✫➠ - 🛡️OWNER:* *DINUKA HIMSARA*
+*│✫➠ - 🌐URL:* *https://github.com/gojo-yagami/GOJO-SATORU-MD*
+
+✨ Thanks For Using Gojo Satoru MD 💙
+
+PREFIX: ${prefix}
+
+> Gojo Satoru MD Powered by Dinuka Himsara`;
+
+GojoBotInc.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://i.ibb.co/h2vC7XG/Gojo-satoru-md-bot-2.jpg` }, caption: up })
 
 }
 })
-conn.ev.on('creds.update', saveCreds)  
+GojoBotInc.ev.on('creds.update', saveCreds)  
 
-conn.ev.on('messages.upsert', async(mek) => {
+GojoBotInc.ev.on('messages.upsert', async(mek) => {
 mek = mek.messages[0]
 if (!mek.message) return        
 mek.message = (getContentType(mek.message) === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 if (mek.key && mek.key.remoteJid === 'status@broadcast' && config.AUTO_READ_STATUS === "true") {
-    await conn.readMessages([mek.key]);
+    await GojoBotInc.readMessages([mek.key]);
     
     // Choose a random emoji from the list
     const emojis = ['💀', '💀', '🔥', '‼️', '✅', '💘'];
     const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
     
     // React to the message with the selected emoji
-    await conn.sendMessage(mek.key.remoteJid, { react: { text: randomEmoji, key: mek.key } });
+    await GojoBotInc.sendMessage(mek.key.remoteJid, { react: { text: randomEmoji, key: mek.key } });
 }
 
-const m = sms(conn, mek)
+const m = sms(GojoBotInc, mek)
 const type = getContentType(mek.message)
 const content = JSON.stringify(mek.message)
 const from = mek.key.remoteJid
-
+/*
 // Always send 'composing' presence update
-await conn.sendPresenceUpdate('composing', from);
+await GojoBotInc.sendPresenceUpdate('composing', from);
 
 // Always send 'recording' presence update
-await conn.sendPresenceUpdate('recording', from);
-
+await GojoBotInc.sendPresenceUpdate('recording', from);
+*/
 const quoted = type == 'extendedTextMessage' && mek.message.extendedTextMessage.contextInfo != null ? mek.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
 const body = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : ''
 const isCmd = body.startsWith(prefix)
@@ -110,48 +122,48 @@ const command = isCmd ? body.slice(prefix.length).trim().split(' ').shift().toLo
 const args = body.trim().split(/ +/).slice(1)
 const q = args.join(' ')
 const isGroup = from.endsWith('@g.us')
-const sender = mek.key.fromMe ? (conn.user.id.split(':')[0]+'@s.whatsapp.net' || conn.user.id) : (mek.key.participant || mek.key.remoteJid)
+const sender = mek.key.fromMe ? (GojoBotInc.user.id.split(':')[0]+'@s.whatsapp.net' || GojoBotInc.user.id) : (mek.key.participant || mek.key.remoteJid)
 const senderNumber = sender.split('@')[0]
-const botNumber = conn.user.id.split(':')[0]
+const botNumber = GojoBotInc.user.id.split(':')[0]
 const pushname = mek.pushName || 'Sin Nombre'
 const isMe = botNumber.includes(senderNumber)
 const isOwner = ownerNumber.includes(senderNumber) || isMe
-const botNumber2 = await jidNormalizedUser(conn.user.id);
-const groupMetadata = isGroup ? await conn.groupMetadata(from).catch(e => {}) : ''
+const botNumber2 = await jidNormalizedUser(GojoBotInc.user.id);
+const groupMetadata = isGroup ? await GojoBotInc.groupMetadata(from).catch(e => {}) : ''
 const groupName = isGroup ? groupMetadata.subject : ''
 const participants = isGroup ? await groupMetadata.participants : ''
 const groupAdmins = isGroup ? await getGroupAdmins(participants) : ''
 const isBotAdmins = isGroup ? groupAdmins.includes(botNumber2) : false
 const isAdmins = isGroup ? groupAdmins.includes(sender) : false
 const reply = (teks) => {
-conn.sendMessage(from, { text: teks }, { quoted: mek })
+GojoBotInc.sendMessage(from, { text: teks }, { quoted: mek })
 }
 
-conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
+GojoBotInc.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
               let mime = '';
               let res = await axios.head(url)
               mime = res.headers['content-type']
               if (mime.split("/")[1] === "gif") {
-                return conn.sendMessage(jid, { video: await getBuffer(url), caption: caption, gifPlayback: true, ...options }, { quoted: quoted, ...options })
+                return GojoBotInc.sendMessage(jid, { video: await getBuffer(url), caption: caption, gifPlayback: true, ...options }, { quoted: quoted, ...options })
               }
               let type = mime.split("/")[0] + "Message"
               if (mime === "application/pdf") {
-                return conn.sendMessage(jid, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, ...options }, { quoted: quoted, ...options })
+                return GojoBotInc.sendMessage(jid, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, ...options }, { quoted: quoted, ...options })
               }
               if (mime.split("/")[0] === "image") {
-                return conn.sendMessage(jid, { image: await getBuffer(url), caption: caption, ...options }, { quoted: quoted, ...options })
+                return GojoBotInc.sendMessage(jid, { image: await getBuffer(url), caption: caption, ...options }, { quoted: quoted, ...options })
               }
               if (mime.split("/")[0] === "video") {
-                return conn.sendMessage(jid, { video: await getBuffer(url), caption: caption, mimetype: 'video/mp4', ...options }, { quoted: quoted, ...options })
+                return GojoBotInc.sendMessage(jid, { video: await getBuffer(url), caption: caption, mimetype: 'video/mp4', ...options }, { quoted: quoted, ...options })
               }
               if (mime.split("/")[0] === "audio") {
-                return conn.sendMessage(jid, { audio: await getBuffer(url), caption: caption, mimetype: 'audio/mpeg', ...options }, { quoted: quoted, ...options })
+                return GojoBotInc.sendMessage(jid, { audio: await getBuffer(url), caption: caption, mimetype: 'audio/mpeg', ...options }, { quoted: quoted, ...options })
               }
             }
 
 
 // Always set the bot's presence status to 'unavailable'
-conn.sendPresenceUpdate('unavailable'); // Sets the bot's last seen status
+GojoBotInc.sendPresenceUpdate('unavailable'); // Sets the bot's last seen status
 
 
 
@@ -162,10 +174,10 @@ const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false
 if (isCmd) {
 const cmd = events.commands.find((cmd) => cmd.pattern === (cmdName)) || events.commands.find((cmd) => cmd.alias && cmd.alias.includes(cmdName))
 if (cmd) {
-if (cmd.react) conn.sendMessage(from, { react: { text: cmd.react, key: mek.key }})
+if (cmd.react) GojoBotInc.sendMessage(from, { react: { text: cmd.react, key: mek.key }})
 
 try {
-cmd.function(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply});
+cmd.function(GojoBotInc, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply});
 } catch (e) {
 console.error("[PLUGIN ERROR] " + e);
 }
@@ -173,19 +185,19 @@ console.error("[PLUGIN ERROR] " + e);
 }
 events.commands.map(async(command) => {
 if (body && command.on === "body") {
-command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
+command.function(GojoBotInc, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
 } else if (mek.q && command.on === "text") {
-command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
+command.function(GojoBotInc, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
 } else if (
 (command.on === "image" || command.on === "photo") &&
 mek.type === "imageMessage"
 ) {
-command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
+command.function(GojoBotInc, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
 } else if (
 command.on === "sticker" &&
 mek.type === "stickerMessage"
 ) {
-command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
+command.function(GojoBotInc, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
 }});
 
 

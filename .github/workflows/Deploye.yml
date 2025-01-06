@@ -1,4 +1,4 @@
-# name: Node.js CI
+#name: Node.js CI
 
 #on:
   push:
@@ -11,7 +11,7 @@
 jobs:
   build:
 
- #   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -31,4 +31,3 @@ jobs:
 
     - name: Start application
       run: npm start
-/*

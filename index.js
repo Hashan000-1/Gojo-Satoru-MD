@@ -69,21 +69,9 @@ require("./plugins/" + plugin);
 console.log('Gojo Satoru MD 💙 Plugins Installed Successful ✅')
 console.log('Gojo Satoru MD 💙Bot Connected To Whatsapp ✅')
 
-let up = `Gojo Satoru MD 💙 Wa-BOT Connected Successful ✅
+let up = `Gojo Satoru MD 💚 Wa-BOT connected successful ✅\n\nPREFIX: ${prefix}`;
 
-*╭⊱✫🤞 Gojo Sotoru MD 💙✫⊱╮*
-*│✫➠ - 📂REPOSITORY NAME:* *GOJO-SATORU-MD*
-*│✫➠ - 📃DESCRIPTION:* *THE WORLD BEST WHATSAPP BOT♻️*
-*│✫➠ - 🛡️OWNER:* *DINUKA HIMSARA*
-*│✫➠ - 🌐URL:* *https://github.com/gojo-yagami/GOJO-SATORU-MD*
-
-✨ Thanks For Using Gojo Satoru MD 💙
-
-PREFIX: ${prefix}
-
-> Gojo Satoru MD Powered by Dinuka Himsara`;
-
-GojoBotInc.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://i.ibb.co/h2vC7XG/Gojo-satoru-md-bot-2.jpg` }, caption: up })
+conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://i.ibb.co/tC37Q7B/20241220-122443.jpg` }, caption: up })
 
 }
 })

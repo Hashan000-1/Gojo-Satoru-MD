@@ -11,9 +11,9 @@ cmd({
 },
 async(GojoBotInc, mek, m, { from, reply }) => {
     const start = Date.now();
-    await reply("𝐂𝐡𝐞𝐜𝐤𝐢𝐧𝐠 Gojo Satoru MD 𝐒𝐩𝐞𝐞𝐝💚"); // Inform the user that the ping is in progress
+    await reply("𝐂𝐡𝐞𝐜𝐤𝐢𝐧𝐠 𝐆𝐨𝐣𝐨 𝐒𝐚𝐭𝐨𝐫𝐮 𝐒𝐩𝐞𝐞𝐝💙"); // Inform the user that the ping is in progress
     const end = Date.now();
     
     const latency = end - start; // Calculate the latency
-    await reply(`Gojo Satoru MD 𝐒𝐩𝐞𝐞𝐝 💚: ${latency}𝐦𝐬`);
+    await reply(`𝐆𝐨𝐣𝐨 𝐒𝐚𝐭𝐨𝐫𝐮 𝐌𝐃 𝐒𝐩𝐞𝐞𝐝 💙: ${latency}𝐦𝐬`);
 });

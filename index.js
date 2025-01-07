@@ -69,9 +69,9 @@ require("./plugins/" + plugin);
 console.log('Gojo Satoru MD 💙 Plugins Installed Successful ✅')
 console.log('Gojo Satoru MD 💙Bot Connected To Whatsapp ✅')
 
-let up = `Gojo Satoru MD 💚 Wa-BOT connected successful ✅\n\nPREFIX: ${prefix}`;
+let up = `Gojo Satoru MD 💙 Wa-BOT connected successful ✅\n\nPREFIX: ${prefix}`;
 
-conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://i.ibb.co/tC37Q7B/20241220-122443.jpg` }, caption: up })
+conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://i.ibb.co/h2vC7XG/Gojo-satoru-md-bot-2.jpg` }, caption: up })
 
 }
 })

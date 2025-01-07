@@ -71,7 +71,7 @@ console.log('Gojo Satoru MD 💙Bot Connected To Whatsapp ✅')
 
 let up = `Gojo Satoru MD 💙 Wa-BOT connected successful ✅\n\nPREFIX: ${prefix}`;
 
-conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://i.ibb.co/h2vC7XG/Gojo-satoru-md-bot-2.jpg` }, caption: up })
+GojoBotInc.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://i.ibb.co/h2vC7XG/Gojo-satoru-md-bot-2.jpg` }, caption: up })
 
 }
 })

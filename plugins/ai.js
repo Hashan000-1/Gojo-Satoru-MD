@@ -6,7 +6,7 @@
  const { fetchJson } = require('../lib/functions');
  
  // Detect any incoming message
- conn.ev.on('messages.upsert', async (message) => {
+ GojoBotInc.ev.on('messages.upsert', async (message) => {
      try {
          const msg = message.messages[0];  // Get the message object
          const { from, body, isGroup, sender } = msg;  // Extract details from the message
@@ -15,7 +15,7 @@
          if (config.AUTO_CHAT === "true" && !isGroup) {
              if (body) {  // If there's text in the message
                  let data = await fetchJson(`https://chatgptforprabath-md.vercel.app/api/gptv1?q=${body}`);
-                 await conn.sendMessage(from, { text: `${data.data}` });
+                 await GojoBotInc.sendMessage(from, { text: `${data.data}` });
                  console.log(`Replied to ${sender} with AI response: ${data.data}`);
              }
          }
@@ -31,7 +31,7 @@
      category: "main",
      filename: __filename
  },
- async (conn, mek, m, { reply }) => {
+ async (GojoBotInc, mek, m, { reply }) => {
      process.env.AUTO_CHAT = "true";  // Enable AI mode by setting the environment variable
      config.AUTO_CHAT = "true";  // Update the config in memory
      return reply("AI mode is now enabled. I'll reply to your messages!");
@@ -44,7 +44,7 @@
      category: "main",
      filename: __filename
  },
- async (conn, mek, m, { reply }) => {
+ async (GojoBotInc, mek, m, { reply }) => {
      process.env.AUTO_CHAT = "false";  // Disable AI mode by setting the environment variable
      config.AUTO_CHAT = "false";  // Update the config in memory
      return reply("AI mode is now disabled. I won't reply with AI responses anymore.");

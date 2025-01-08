@@ -15,7 +15,7 @@
        desc: "Download anime from afabra.store",
        category: "main",
        filename: __filename
-   }, async (GojoBotInc, mek, m, { reply, args, q }) => {
+   }, async (conn, mek, m, { reply, args, q }) => {
        try {
            // Check if anime name is provided
            if (!q) {

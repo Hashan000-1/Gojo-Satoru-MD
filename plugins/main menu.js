@@ -8,10 +8,10 @@ cmd({
     category: "main",
     react: "✅",
     filename: __filename
-}, async (GojoBotInc, mek, m, { from, quoted, reply }) => {
+}, async (conn, mek, m, { from, quoted, reply }) => {
     try {
         // Send a message indicating the bot is alive
-        const message = await GojoBotInc.sendMessage(from, { text: '`𝗚𝗼𝗷𝗼 𝗦𝗮𝘁𝗼𝗿𝘂 𝗠𝗗 𝗕𝗼𝘁 𝗠𝗲𝗻𝘂 💙`' });
+        const message = await conn.sendMessage(from, { text: '`𝗚𝗼𝗷𝗼 𝗦𝗮𝘁𝗼𝗿𝘂 𝗠𝗗 𝗕𝗼𝘁 𝗠𝗲𝗻𝘂 💙`' });
 
         // Simulate some processing time
         const startTime = Date.now();
@@ -85,7 +85,7 @@ cmd({
 `;
 
         // Send the alive response with the updated menu
-        await GojoBotInc.sendMessage(from, {
+        await conn.sendMessage(from, {
             document: { url: pdfUrl },
             fileName: 'Gojo Satoru MD💙',
             mimetype: "application/pdf",

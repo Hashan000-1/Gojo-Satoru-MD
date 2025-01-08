@@ -104,7 +104,7 @@ cmd({
                     title: '©Gojo Satoru MD 💙',
                     body: ' *Gojo Satoru MD 💙*',
                     thumbnailUrl: 'https://i.ibb.co/h2vC7XG/Gojo-satoru-md-bot-2.jpg',
-                    sourceUrl: 'https://wa.me/+94761209144',
+                    sourceUrl: 'https://github.com/gojo-yagami/Gojo-Satoru-MD/tree/main',
                     mediaType: 1,
                     renderLargerThumbnail: true
                 }

@@ -150,27 +150,6 @@ GojoBotInc.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
             }
 
 
-// Always set the bot's presence status to 'unavailable'
-GojoBotInc.sendPresenceUpdate('unavailable'); // Sets the bot's last seen status
-
-GojoBotInc.ev.on('messages.upsert', async (message) => {
-  try {
-      const msg = message.messages[0];  // Get the message object
-      const { from, body, isGroup, sender } = msg;  // Extract details from the message
-// Only reply with AI when AI mode is ON, and ensure the message is from a private chat (not a group)
-      if (config.AUTO_CHAT === "true" && !isGroup) {
-          if (body) {  // If there's text in the message
-              let data = await fetchJson(`https://chatgptforprabath-md.vercel.app/api/gptv1?q=body`);
-              await GojoBotInc.sendMessage(from,{ text: `data.data` });
-              console.log(`Replied to sender with AI response: ${data.data}`);
-          }
-      }
-  } catch (e) {
-      console.log('Error in auto-reply:', e);
-  }
-});
-
-
 
 
 const events = require('./command')

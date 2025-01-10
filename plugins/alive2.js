@@ -12,10 +12,14 @@ cmd({
 },
 async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        // Upload the image first
+        // Download the image
         const imageUrl = 'https://i.ibb.co/h2vC7XG/Gojo-satoru-md-bot-2.jpg';
-        const media = await prepareWAMessageMedia({ image: imageUrl }, { upload: conn.waUploadToServer });
+        const { data } = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+        const imageBuffer = Buffer.from(data);  // Convert the image data to a buffer
         
+        // Upload the image buffer to WhatsApp server
+        const media = await prepareWAMessageMedia({ image: imageBuffer }, { upload: conn.waUploadToServer });
+
         // Create the interactive message content
         const msgContent = generateWAMessageFromContent(m.chat, {
             viewOnceMessage: {
@@ -61,7 +65,7 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         await conn.relayMessage(m.chat, msgContent.message, {
             messageId: msgContent.key.id
         });
-        
+
     } catch (e) {
         console.log(e);
         reply(`${e}`);

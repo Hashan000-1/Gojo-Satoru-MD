@@ -65,8 +65,11 @@ const msgContent = generateWAMessageFromContent(m.chat, {
     }
 }, {});
 
-// Send the message to the chat
-await conn.relayMessage(m.chat, msgContent.message, {
-    messageId: msgContent.key.id
-});
+
+        await conn.relayMessage(m.chat, msgContent.message, {
+            messageId: msgContent.key.id
+        });
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
 

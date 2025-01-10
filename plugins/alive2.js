@@ -64,8 +64,6 @@ const msgContent = generateWAMessageFromContent(m.chat, {
         }
     }
 }, {});
-
-
         await conn.relayMessage(m.chat, msgContent.message, {
             messageId: msgContent.key.id
         });
@@ -73,3 +71,4 @@ const msgContent = generateWAMessageFromContent(m.chat, {
         console.log(e);
         reply(`${e}`);
     }
+    })

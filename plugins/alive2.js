@@ -72,4 +72,4 @@ const msgContent = generateWAMessageFromContent(m.chat, {
     } catch (e) {
         console.log(e);
         reply(`${e}`);
-
+    }

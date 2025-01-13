@@ -1,23 +1,28 @@
 {
-  "name": "YourBot",
+  "name": "Gojo-Satoru",
   "description": "Javascript WhatsApp bot made by YourName",
-  "logo": "https://telegra.ph/file/ad25b2227fa2a1a01b707.jpg",
+  "logo": "https://i.ibb.co/h2vC7XG/Gojo-satoru-md-bot-2.jpg",
   "keywords": ["bot"],
   "success_url": "/",
 
   "env": {
     "SESSION_ID": {
-      "description": "Put the session-id here.",
+      "description": "PZszSBhY#89k3z1R8aIG49xm0K8jOSs8D1e7FApgAPor0mdLaQ-c",
       "required": true
     },  
 
     "ALIVE_IMG": {
-      "description": "Put your alive img here.",
+      "description": "https://i.ibb.co/h2vC7XG/Gojo-satoru-md-bot-2.jpg",
+      "required": true
+    },
+   
+    "AUTO_READ_STATUS": {
+      "description": "false",
       "required": true
     },
     
     "ALIVE_MSG": {
-      "description": "Put your alive msg here.",
+      "description": "Hi I'm Alive",
       "required": true
     }   
 },

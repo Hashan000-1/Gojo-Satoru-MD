@@ -99,5 +99,5 @@
            console.error("Error:", error);
            reply("An error occurred while fetching or downloading anime.");
        }
-   });
+   }); 
    

@@ -116,4 +116,3 @@ For any issues or suggestions, feel free to contact:
 ---
 
 **© 2025 Gojo Satoru MD Bot - The Strongest Bot 🌟**
-

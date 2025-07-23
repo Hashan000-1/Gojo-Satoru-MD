@@ -7,7 +7,7 @@
 
   "env": {
     "SESSION_ID": {
-      "description": "PZszSBhY#89k3z1R8aIG49xm0K8jOSs8D1e7FApgAPor0mdLaQ-c",
+      "description": "k8QzkJCA#Aigu_ybSZBObQF_a9yzcRYhR0ibbDAIBGv-7aih21L8",
       "required": true
     },  
 
@@ -17,7 +17,7 @@
     },
    
     "AUTO_READ_STATUS": {
-      "description": "false",
+      "description": "true",
       "required": true
     },
     
